@@ -2,12 +2,8 @@ const express = require('express');
 const bodyParser = require("body-parser");
 let app = express();
 
-const port = 8080;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 app.get('/',function(req,res){
-  res.send('Alibaba');
+  res.send('KAlibaba');
 })
 
 app.get('/sync',function(req,res){
