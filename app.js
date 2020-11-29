@@ -1,9 +1,9 @@
 const express = require('express'); 
-const bodyParser = require("body-parser");
+
 let app = express();
 
 app.get('/',function(req,res){
-  res.send('KAlibaba');
+  res.send('Alibaba');
 })
 
 app.get('/sync',function(req,res){
