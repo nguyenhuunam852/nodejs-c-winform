@@ -3,9 +3,9 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     let data=[{
-      username:"staff1",
-      password:"staff1",
-      email:"abc@gmail.com",
+      username:"staff2",
+      password:"staff2",
+      email:"abd@gmail.com",
       idrole:2
     }];
     data.map(item=>{

@@ -1,5 +1,5 @@
 const express = require('express'); 
-
+var bodyParser = require('body-parser');
 let app = express();
 
 app.get('/',function(req,res){
@@ -13,6 +13,7 @@ app.get('/sync',function(req,res){
   });
 })
 app.use('/users',require('./server/route/user_route'));
+app.use('/files',require('./server/route/file_route'));
 
 app.set('port',process.env.PORT || 5000);
 app.listen(app.get('port'),()=>{
