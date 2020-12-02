@@ -3,15 +3,17 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     let data=[{
-      rolename:"staff"
+      username:"staff3",
+      password:"staff3",
+      email:"abk@gmail.com",
+      idrole:2
     }];
     data.map(item=>{
       item.createdAt=Sequelize.literal('NOW()');
       item.updatedAt=Sequelize.literal('NOW()');
       return item
     });
-
-    return queryInterface.bulkInsert('Roles', data,{});
+    return queryInterface.bulkInsert('Users', data,{});
   },
 
   down: async (queryInterface, Sequelize) => {

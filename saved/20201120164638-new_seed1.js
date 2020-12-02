@@ -3,9 +3,10 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     let data=[{
-      username:"staff",
-      password:"staff",
-      idrole:1
+      username:"staff1",
+      password:"staff1",
+      email:"abc@gmail.com",
+      idrole:2
     }];
     data.map(item=>{
       item.createdAt=Sequelize.literal('NOW()');

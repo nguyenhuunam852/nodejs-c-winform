@@ -2,7 +2,7 @@ let models = require('../../models');
 let controller = {};
 
 let uToken = models.uToken;
-let user = models.User;
+let User = models.User;
 
 controller.deleteToken = (iduser)=>{
     return new Promise((resolve,reject)=>{
@@ -24,10 +24,16 @@ controller.getUserwithToken = (token) =>{
     return new Promise((resolve,reject)=>{
         try { 
             uToken.findOne({
-              token:token
+              where:{
+               token:token
+              }
             })
             .then(data=>{
-              resolve(data)
+              resolve(User.findOne({
+                where:{
+                 id:data.iduser
+                }
+              }))
             })
             .catch(error=>reject(new Error(error)))    
         }
@@ -55,6 +61,26 @@ controller.createToken = (token,active,id) =>{
           console.log("leaving catch block");
         }
      });
+}
+controller.getToken=(token)=>{
+  return new Promise((resolve,reject)=>{
+    try { 
+        uToken.findOne({
+          where:{
+           token:token
+          }
+        })
+        .then(data=>{
+          resolve(data)
+        })
+        .catch(error=>reject(new Error(error)))    
+    }
+    catch (e) {
+      console.log("entering catch block");
+      console.log(e);
+      console.log("leaving catch block");
+    }
+ });
 }
 
 module.exports= controller;

@@ -7,11 +7,15 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.belongsTo(models.Role,{foreignKey:'idrole'})
       User.hasOne(models.uToken,{foreignKey:'iduser'})
+      User.hasMany(models.File,{foreignKey:'iduser'})
+      User.hasMany(models.UserFileView,{foreignKey:'iduser'})
+  
     }
   };
   User.init({
     username: DataTypes.STRING,
     password: DataTypes.STRING,
+    email:DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'User',
