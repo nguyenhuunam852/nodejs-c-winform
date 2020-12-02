@@ -36,9 +36,7 @@ var upload = multer({ storage: storage })
 app.post('/api/postfile', upload.array('files', 2),function (req, res, next) {
   let filecontroller = require('../controller/file_controller');
   filecontroller.insertOne(req.files[0].originalname,req.files[1].originalname,req.body.iduser).then(data=>{
-    console.log('Done');
   }).catch((e)=>{
-    console.log(e)
   })                
   
   res.end("upload complete");      
@@ -50,14 +48,10 @@ app.post('/api/checktoken',jsonParser,urlencodedParser,(req,res,next)=>{
     resp={}   
     controller.getToken(req.body['token']).then(
       data=>{
-        console.log(data)
         var date = new Date(data.createdAt);
         var seconds = date.getTime() / 1000;
         var nowdate = Date.now();
         var now = new Date(nowdate).getTime() / 1000;         
-        console.log(Math.trunc(now)>Math.trunc(seconds)+Math.trunc(data.active_time))   
-        console.log(Math.trunc(now))
-        console.log(Math.trunc(seconds)+data.active_time)
         if(Math.trunc(now)>Math.trunc(seconds)+Math.trunc(data.active_time))
         {
            console.log('Checkin1')
@@ -94,7 +88,6 @@ app.post('/api/login',jsonParser,urlencodedParser,(req,res,next)=>{
       let controller = require('../controller/user_controller');
       controller.login(req.body['username'],req.body['password']).then((body)=>{
          data1={}
-         console.log(1)
          if(body!=null)
          {
            data1.id=body.id

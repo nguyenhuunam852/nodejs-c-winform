@@ -1,9 +1,12 @@
 const express = require('express'); 
 var bodyParser = require('body-parser');
 let app = express();
+var fs = require('fs');
 
-app.get('/',function(req,res){
-  res.send('Alibaba');
+app.get('/downloads/:file', function(req,res){
+  id= req.params.file
+  res.download("downloads/"+id)
+  
 })
 
 app.get('/sync',function(req,res){
@@ -12,6 +15,7 @@ app.get('/sync',function(req,res){
     res.send("done")
   });
 })
+
 app.use('/users',require('./server/route/user_route'));
 app.use('/files',require('./server/route/file_route'));
 
