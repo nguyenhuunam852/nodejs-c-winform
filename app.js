@@ -3,8 +3,6 @@ const express = require('express');
 let app = express();
 
 const port = 8080;
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/',function(req,res){
   res.send('Alibaba');
